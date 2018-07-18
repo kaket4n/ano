@@ -1,14 +1,20 @@
+set :ssh_options, :port => "22", :keys => "~/.ssh/ryosuke"
 # Load DSL and Setup Up Stages
 require 'capistrano/setup'
 
 # Includes default deployment tasks
 require 'capistrano/deploy'
 
+require "capistrano/scm/git"
+install_plugin Capistrano::SCM::Git
+
 require 'capistrano/rbenv'
 require 'capistrano/bundler'
 require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
 require 'capistrano/passenger'
+
+# set :ssh_options, :port => "port_number", :keys => "~/.ssh/id_rsa"
 
 # Includes tasks from other gems included in your Gemfile
 #
