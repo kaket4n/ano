@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
+  acts_as_paranoid
+
+  has_many :skills
 
   validates :screen_name, uniqueness: true
   validates :email, uniqueness: true

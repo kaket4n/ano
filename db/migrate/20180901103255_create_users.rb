@@ -6,6 +6,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :crypted_password
       t.string :salt
 
+      t.datetime :deleted_at
+
       t.timestamps
     end
 
