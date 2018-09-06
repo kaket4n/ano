@@ -1,6 +1,7 @@
 <%= "#{user.screen_name}さんのスキル一覧" %>
 
+<ul>
 <% @skills.each do |skill| %>
-  <%= skill.name %>
-  <%= skill.description %>
+  <li><%= skill.name %></li>
 <% end %>
+</ul>
