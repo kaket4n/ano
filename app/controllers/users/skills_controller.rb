@@ -1,9 +1,15 @@
 class Users::SkillsController < ApplicationController
   def index
+    @user = user
     @skills = user.skills
   end
 
+  def show
+    @skill = skill
+  end
+
   def new
+    @user = user
     @skill = current_user.skills.new
   end
 
@@ -17,7 +23,21 @@ class Users::SkillsController < ApplicationController
     redirect_to user_skills_path(current_user)
   end
 
+  def edit
+    @user = user
+    @skill = skill
+  end
+
+  def update
+    render :eidt unless skill.update(skill_params)
+
+    redirect_to user_skill_path(skill)
+  end
+
   def destroy
+    flash[:error] = "削除に失敗しました" unless skill.destroy
+
+    redirect_to user_skills_path(current_user)
   end
 
   private
@@ -25,12 +45,16 @@ class Users::SkillsController < ApplicationController
   def user
     @user ||= User.find(params[:user_id])
   end
-  helper_method :user
+
+  def skill
+    @skill ||= Skill.find(params[:id])
+  end
 
   def skill_params
     params.require(:skill).permit(
       :name,
       :description,
+      :published_at,
     )
   end
 end
