@@ -1,2 +1,6 @@
 <h3>Ano へようこそ</h3>
-<%= link_to "ログアウト", logout_path, method: :delete %>
+
+<h4>ユーザ一覧</h4>
+<% @users.each do |user| %>
+  <%= link_to user.screen_name, user_path(user) %>
+<% end %>

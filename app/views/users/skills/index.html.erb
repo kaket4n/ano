@@ -1,0 +1,11 @@
+<%= "#{@user.screen_name}さんのスキル一覧" %>
+
+<ul>
+<% @skills.each do |skill| %>
+  <li><%= link_to skill.name, user_skill_path(@user, skill) %></li>
+<% end %>
+</ul>
+
+<% if @user == current_user %>
+  <%= link_to "スキルを登録する", new_user_skill_path %>
+<% end %>
