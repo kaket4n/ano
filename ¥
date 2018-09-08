@@ -1,6 +1,5 @@
 class Users::SkillsController < ApplicationController
-  before_action :require_login, except: %i(index show)
-  before_action :reject_invalid_user, except: %i(index show)
+  before_action -> { login_user? }, only: %i(new edit )
 
   def index
     @user = user

@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login
-
   def show
-    @user = current_user
+    @user = user
   end
 
   def new
@@ -20,6 +18,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def user
+    @user ||= User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(
