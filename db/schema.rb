@@ -10,17 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_06_094656) do
+ActiveRecord::Schema.define(version: 2018_09_04_093514) do
 
   create_table "skills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "name", null: false
     t.text "description"
-    t.datetime "published_at"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id", "published_at"], name: "index_skills_on_user_id_and_published_at"
     t.index ["user_id"], name: "index_skills_on_user_id"
   end
 

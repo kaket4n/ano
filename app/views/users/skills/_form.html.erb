@@ -8,11 +8,6 @@
     <%= f.text_area :description %>
   </div>
   <div>
-    <%# TODO: enum でステータス(公開・非公開)をもって model  層で代入する %>
-    <%= f.label :is_published %>
-    <%= f.check_box :published_at, {}, true, false %>
-  </div>
-  <div>
     <%= f.submit %>
   </div>
 <% end %>

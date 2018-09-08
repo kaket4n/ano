@@ -54,7 +54,6 @@ class Users::SkillsController < ApplicationController
     params.require(:skill).permit(
       :name,
       :description,
-      :published_at,
     )
   end
 end
