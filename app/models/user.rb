@@ -3,6 +3,10 @@ class User < ApplicationRecord
   acts_as_paranoid
 
   has_many :skills
+  has_many :requesting_orders, class_name: 'Order' # requesting
+  has_many :requesting_skills, through: :requesting_orders, source: :skill # requesting
+  has_many :requested_orders, class_name: 'Order', through: :skills, source: :orders
+  has_many :requested_skills, through: :requested_orders, source: :skill
 
   validates :screen_name, uniqueness: true
   validates :email, uniqueness: true

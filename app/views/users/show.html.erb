@@ -1,3 +1,15 @@
 <%= "#{@user.screen_name}さんのページ" %>
 
 <%= link_to "スキル一覧", user_skills_path(@user) %>
+
+<% if @user == current_user %>
+  <h3>注文を出しているスキル一覧</h3>
+  <% @requesting_orders.each do |order| %>
+     <p><%= order.skill_name %></p>
+  <% end %>
+
+  <h3>注文を受けているスキル一覧</h3>
+  <% @requested_orders.each do |order| %>
+     <p><%= order.skill_name %> <span><%= link_to "トレードするスキルを選ぶ", new_trades_order_path(requested_order_id: order.id) %></span></p>
+  <% end %>
+<% end %>

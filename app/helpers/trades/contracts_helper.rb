@@ -1,0 +1,2 @@
+module Trades::ContractsHelper
+end

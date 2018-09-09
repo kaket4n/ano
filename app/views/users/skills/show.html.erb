@@ -1,3 +1,9 @@
 <%= @skill.name %> <span><%= @skill.edit_path %></span><span><%= @skill.delete_path %></span>
 
+<% unless @user == current_user %>
+  <div>
+    <%= link_to "このスキルをトレードに申し込む", user_skill_orders_path(@user, @skill), method: :post %>
+  </div>
+<% end %>
+
 <%= link_to "スキル一覧をみる", user_skills_path(@user)%>

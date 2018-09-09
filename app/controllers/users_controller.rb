@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   def show
     @user = user
+
+    @requesting_orders = user.requesting_orders.includes(:skill)
+    @requested_orders = user.requested_orders.includes(:skill)
   end
 
   def new

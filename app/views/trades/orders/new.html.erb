@@ -1,0 +1,13 @@
+<h1>Trades::Orders#new</h1>
+<p>Find me in app/views/trades/orders/new.html.erb</p>
+
+<p>替わりに要求する相手のスキルを選択してください</p>
+<%= form_tag('/trades/orders') do |f| %>
+  <%= hidden_field_tag :requested_order_id, params[:requested_order_id] %>
+  <% @skills.each do |skill| %>
+    <div><%= radio_button_tag :skill_id, skill.id %><%= skill.name %></div>
+  <% end %>
+  <div>
+    <%= submit_tag %>
+  </div>
+<% end %>
